@@ -1,2 +1,2 @@
-# 没什么好看的
-邮箱：vinebyte@gmail.com
+# 新手上路
+指点指点：vinebyte@gmail.com
