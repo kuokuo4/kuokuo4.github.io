@@ -150,7 +150,7 @@ div.horizontal li.tab3 a:active {
   }
 .imgbanner
 {
-padding: 40px 0;
+padding-bottom: 40px;
 }
 .makemoneyarea{
   display: flex;
