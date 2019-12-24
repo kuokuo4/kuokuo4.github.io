@@ -152,7 +152,14 @@ div.horizontal li.tab3 a:active {
 {
 padding: 40px 0;
 }
-
+.makemoneyarea{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+.makemoneyarea p{
+  margin-bottom: -1%;
+}
 .makemoneybook{
   display: flex;
   display: -webkit-flex;
@@ -163,16 +170,26 @@ padding: 40px 0;
 }
 .makemoneybookleft
 {
-  /* flex: 0 0 45%; */
-
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  flex: 0 0 32%;
+}
+.makemoneybookmid
+{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  padding-left: 2%;
+  flex: 0 0 32%;
 }
 .makemoneybookright
 {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
-  padding-left: 1.5%;
-  flex: 0 0 50%;
+  padding-left: 2%;
+  flex: 0 0 32%;
 }
 .makemoneybook img
 {
@@ -205,6 +222,7 @@ padding: 40px 0;
 .mmarticletitle
 {
   flex: 0 0 55%;
+  padding-left: 1rem;
 }
 .mmarticletitle p
 {
