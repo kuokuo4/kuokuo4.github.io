@@ -9,20 +9,24 @@
     <title>Document</title>
 </head>
 <body>
-    <iframe id="aa" name="myframe" src="sjds.html"   frameborder:0;
-    width:960;
-    height:1200;
-    marginheight:0;
-    marginwidth:0;
-    scrolling:no;
-    ></iframe>
+    <iframe id="aa" name="myframe" src="sjds.html"   frameborder:0;></iframe>
     <script>
+        function setIframeHeight(iframe) {
+    if (iframe) {
+    var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+    if (iframeWin.document.body) {
+    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+    }
+    }
+    };
         window.onload = function(){
             var ifra = document.getElementById('aa');  //选中iframe   
             var test = ifra.contentWindow.document.body;
             //通过contentWindow来查询iframe内部元素
-            test.style.['max-Width']="100%";
+            test.setAttribute('style', 'max-width: 100% !important');
+            setIframeHeight(document.getElementById('external-frame'));
         }
+        
     </script>
 </body>
 </html>
