@@ -49,10 +49,18 @@
 </div>
 </body>
 <script type="text/javascript">
-      window.onload = function () {
-        var test =
-          document.getElementById('frame1').contentWindow.document.getElementById('cc9');
-        test.style.color = "red";
-      }
+      // window.onload = function () {
+      //   var test =
+      //     document.getElementById('frame1').contentWindow.document.getElementById('cc9');
+      //   test.style.color = "red";
+      // }
+
+    $(document).ready(function(){
+        $("#frame1").contents().find("#c99").css("color","red");
+ 
+        var aaa = $("#frame1").contents().find("#c99").html();
+        //var aaa = $(document.getElementById('iframesId').contentWindow.document.body).val();
+        console.log(aaa);
+    });
   </script>
 </html>
