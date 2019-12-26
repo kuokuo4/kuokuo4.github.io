@@ -9,14 +9,12 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <iframe id="aa" name="myframe" src="child.html" frameborder="0"></iframe>
-    <script>
-        window.onload = function(){
-            var ifra = document.getElementById('aa');  //选中iframe   
-            var test = ifra.contentDocument.getElementById('box');
-            //通过contentWindow来查询iframe内部元素
-            test.style.color="red";
+    <div id="box">aaaaaaaa</div>
+    <!--<script>
+        // 操作子页面
+        document.getElementById('box').onclick = function () {
+            parent.window.document.getElementById('box2').style.display='none'
         }
-    </script>
+    </script>-->
 </body>
 </html>
