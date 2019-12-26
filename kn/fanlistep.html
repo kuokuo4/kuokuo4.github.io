@@ -18,10 +18,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
   <title>快鸟GO</title>
   <link rel="stylesheet" type="text/css" href="css/baseStyle.css">
+
 </head>
 
 <body>
-    
+  <div class="navag">
+    <div class="goback" onclick="location.href='javascript:history.go(-1);';"><a>&#60;</a></div>
+  </div>
 <div class="tabcontent">
 <div id="tab1">
   <div style="font-size:0">
@@ -37,8 +40,19 @@
     </p>
   </div>
 </div>
-
 </div>
+
+<div>
+  <div>
+    <iframe id="frame1" frameborder="0" width="100%" height="3300"  marginheight="no" marginwidth="no" scrolling="no" src="article/whatskn.html"></iframe>
+  </div>
 </div>
 </body>
+<script type="text/javascript">
+      window.onload = function () {
+        var test =
+          document.getElementById('frame1').contentWindow.document.getElementById('cc9');
+        test.style.color = "red";
+      }
+  </script>
 </html>

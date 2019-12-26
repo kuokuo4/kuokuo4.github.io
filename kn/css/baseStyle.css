@@ -247,3 +247,27 @@ letter-spacing: 0.1rem;
   overflow: hidden;
   vertical-align: middle;
 }
+.goback{
+left: 2rem;
+top: 2rem;
+z-index: 2;
+position: relative;
+font-size: 4rem;
+font-weight: 100;
+color:gray;
+}
+
+.navag
+{
+  z-index: 1;
+  width: 100%;
+  height: 8rem;
+  position: fixed;
+  background-color: #ffffff;
+  border-bottom: gray 0.4px solid;
+}
+/* 
+.f1{height:485px; overflow: hidden;}
+.f2{height:485px; overflow: hidden;}
+#frame1{position:absolute; top:-355px;left:0; transform:scale(0.9); z-index:1}
+#frame2{position:relative; top:-895px;left:-4.8%; transform:scale(0.9); z-index: 0} */
