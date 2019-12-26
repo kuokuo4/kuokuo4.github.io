@@ -13,7 +13,7 @@
     <script>
         window.onload = function(){
             var ifra = document.getElementById('aa');  //选中iframe   
-            var test = ifra.contentDocument.getElementById('box');
+            var test = ifra.contentWindow.document.body;
             //通过contentWindow来查询iframe内部元素
             test.style.color="red";
         }
