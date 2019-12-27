@@ -33,7 +33,7 @@
         window.onload = function(){
             var bodywidth = document.body.style.width;
             var ifra = document.getElementById('aa');  //选中iframe   
-            ifra.style.width=bodywidth + bodywidth;
+            ifra.style.width=bodywidth*0.5;
             var test = ifra.contentWindow.document.body;
             //通过contentWindow来查询iframe内部元素
             test.setAttribute('style', 'max-width: 100% !important');
