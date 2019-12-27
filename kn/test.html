@@ -13,15 +13,16 @@
     <div class="navag">
         <div class="goback" onclick="location.href='javascript:history.go(-1);';"><a>&#60;</a></div>
       </div>
-    <div class="row" style="padding-top: 0;">
+      <div id="inner"></div>
+    <div class="row" style="padding-top: 5rem;">
         <div class="col-xs-6 f1">
           <iframe id="aa" frameborder=0 width=960 height=1200  marginheight=0 marginwidth=0 scrolling=no src=sjds.html></iframe>
         </div>
      </div>
 
     <!-- <iframe id="" name="myframe" src="sjds.html" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe> -->
-    <script>
-        
+    <script src="http://code.jquery.com/jquery-2.1.1.js">
+        $("#inner").load('sjds.html')
         function setIframeHeight(iframe) {
     if (iframe) {
     var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
