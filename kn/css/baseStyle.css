@@ -266,11 +266,3 @@ color:gray;
   background-color: #ffffff;
   border-bottom: gray 0.4px solid;
 }
-iframe {
-  frameborder:0;
-  width:960;
-  height:1200;
-  marginheight:0;
-  marginwidth:0;
-  scrolling:no;
-  }
