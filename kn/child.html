@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script></script>
 </head>
 <body>
-    <div id="box">aaaaaaaa</div>
-    <!--<script>
-        // 操作子页面
-        document.getElementById('box').onclick = function () {
-            parent.window.document.getElementById('box2').style.display='none'
-        }
-    </script>-->
+    <iframe src="sjds.html" id="iframepage" frameborder="0" width="100%" scrolling="no" marginheight="0" marginwidth="0" onload="iFrameHeight()"></iframe>
+ 
+
 </body>
+<script type="text/javascript" language="javascript">   
+    function iFrameHeight() {   
+        var ifm= document.getElementById("iframepage");   
+        var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument;   
+        if(ifm != null && subWeb != null) {
+           ifm.height = subWeb.body.scrollHeight;
+           ifm.width = subWeb.body.scrollWidth;
+        }   
+    }   
+</script>
 </html>
