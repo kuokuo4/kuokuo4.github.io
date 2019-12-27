@@ -32,9 +32,10 @@
         window.onload = function(){
             var ifra = document.getElementById('aa');  //选中iframe   
             ifra.style.width=document.body.clientWidth;
+            test.style.cssText="width: clientWidth";
             var test = ifra.contentWindow.document.body;
             //通过contentWindow来查询iframe内部元素
-            test.setAttribute('style', 'max-width: 100% !important');
+            test.style.cssText="max-width: 100%";
             setIframeHeight(document.getElementById('aa'));
         }
         
