@@ -21,6 +21,7 @@
 
     <!-- <iframe id="" name="myframe" src="sjds.html" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe> -->
     <script>
+        
         function setIframeHeight(iframe) {
     if (iframe) {
     var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
@@ -30,7 +31,9 @@
     }
     };
         window.onload = function(){
+            var bodywidth = document.body.style.width;
             var ifra = document.getElementById('aa');  //选中iframe   
+            ifra.style.width=bodywidth;
             var test = ifra.contentWindow.document.body;
             //通过contentWindow来查询iframe内部元素
             test.setAttribute('style', 'max-width: 100% !important');
