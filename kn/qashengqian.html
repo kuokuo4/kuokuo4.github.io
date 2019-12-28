@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>常见问题</title>
+        <meta charset="UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="grey" />
+                <script src="/h5/lib/zepto.1.1.6.min.js"></script>
+        <script src="/h5/lib/zepto.1.1.6.touch.min.js"></script>
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149827338-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-149827338-1');
+        </script>
+        <script>
+            // TODO 百度统计代码 、友盟统计
+            var _hmt = _hmt || [];
+            var cnzz_protocol = null;
+            var _czc = null;
+                        (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?d16392bdb4f9ba25bfbcf881ab2fdfba";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+            cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278082909'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278082909' type='text/javascript'%3E%3C/script%3E"));
+                    </script>
+                           <link rel="stylesheet" type="text/css" href="//qnst3.lanlanlife.com/release/static/h5/css/base-d02e577528.css"/>
+   <link rel="stylesheet" type="text/css" href="//qnst3.lanlanlife.com/release/static/h5/css/sqb/ask-5f3211a5f7.css"/>
+            </head>
+    <body style="padding-top:0">
+                <script type="text/javascript">
+        window.mobileUtil = (function(win, doc) {
+        	var UA = navigator.userAgent,
+        		isAndroid = /android|adr/gi.test(UA),
+        		isIOS = /iphone|ipod|ipad/gi.test(UA) && !isAndroid,
+                isBlackBerry = /BlackBerry/i.test(UA),
+                isWindowPhone = /IEMobile/i.test(UA),
+        		isMobile = isAndroid || isIOS || isBlackBerry || isWindowPhone,
+        	    isIphoneX = /iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375);
+        	return {
+        	    isIphoneX: isIphoneX,
+        		isAndroid: isAndroid,
+        		isIOS: isIOS,
+        		isMobile: isMobile,
+        		isWeixin: /MicroMessenger/gi.test(UA),
+        		isQQ: /QQ/gi.test(UA),
+                isApp: /xiaoshijie/gi.test(UA)
+            };
+        })(window, document);
+        !(function (doc, win) {
+            var docEl = doc.documentElement,resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',fsize,
+            fn = function () {
+                var cWidth = !mobileUtil.isMobile ? 750 : docEl.clientWidth;
+                fsize = cWidth/7.5;
+                cWidth && (docEl.style.fontSize = 2 * fsize + 'px');
+            };
+            fn();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, fn, false);
+        })(document, window);
+        </script>
+                <div id="app" v-cloak>
+    <div class="item"
+         v-for="(item, index) in ask"
+         :key="'ask-' + index"
+    >
+        <div class="item__left" @click="toggleClose(index)">
+            <img class="item__left__icon" :src="item.logo" alt="" />
+            <h3 class="item__left__h3">{{item.title}}</h3>
+            <img
+                v-if="item.content.length > 2"
+                v-show="item.close"
+                class="item__left__arrow item__left__arrow--open"
+                src="http://qnoss2.lanlanlife.com/8c6cfc22835c493d147b116548242936_12x20.png"
+                alt=""
+            />
+            <img
+                v-if="item.content.length > 2"
+                v-show="!item.close"
+                class="item__left__arrow item__left__arrow--close"
+                src="http://qnoss3.lanlanlife.com/3db991f47fc30fc1164bcd669c3a3cf8_12x20.png"
+                alt=""
+            />
+        </div>
+        <ul class="item__right one-pix one-pix--vertical" :class="{'item__right--close': item.close}">
+            <li v-for="(item2, index2) in item.content"
+                class="item__right__item"
+                :class="{'one-pix one-pix--horizontal': index2 > 0}"
+                :key="'question-' + index2"
+                @click="viewAnswer(index, index2)"
+            >{{item2.question}}</li>
+        </ul>
+    </div>
+    <div class="modal" v-show="showAnswer">
+        <div class="modal__mask" @click="closeAnswer" id="mask"></div>
+        <div class="modal__content modal--answer">
+            <h3 class="modal--answer__h3">{{question.question}}</h3>
+            <p class="modal--answer__p" v-html="question.answer"></p>
+            <div class="modal--answer__footer one-pix one-pix--horizontal" @click="closeAnswer">我知道了</div>
+        </div>
+    </div>
+</div>
+<script>
+    var ask = "[{"title":"关于好省","content":[{"question":"什么是好省？","answer":"好省是全国人民都可以用的“综合性导购优惠返佣创业平台”，有了它在淘宝天猫购物都可以领券获得返利，吃喝玩乐也可以领取优惠券，分享商品还能赚钱，真正的自购省钱，分享赚钱！"},{"question":"好省推荐的商品很实惠返佣又高，质量有保证吗？","answer":"好省有自己的选品团队，搜集淘宝性价比最高的商品，所以你看到的都是即便宜品质又好佣金又高的商品，放心购买，大胆分享，强大的后盾支持你市场拓展和推广。"}],"logo":"http:\/\/qnoss3.lanlanlife.com\/5dc4133079a02d2fe541bf1f78eed93b_88x88.png"},{"title":"关于商品","content":[{"question":"怎么保证商品的品质呢？","answer":"好省app只是作为各大电商平台的载体，你所购买的商品均来自各大知名电商平台，中国的电商经过10几年的发展，已经相当专业和成熟，都有非常完善的售后服务，你购买的商品均受到《中国消费者保护法》的保护。"},{"question":"为什么有些商品搜不到优惠券？","answer":"淘宝有几千万的商家，不是每个商家每天都会做活动的，但是只要淘宝商家一有活动，好省就立刻会发布最新的隐藏优惠券，你可以免费领取。"}],"logo":"http:\/\/qnoss.lanlanlife.com\/7497108503b9680d2b819e9afd838552_88x88.png"},{"title":"关于订单","content":[{"question":"订单为什么会失效？","answer":"（1）订单已退款。<br>（2）宝贝拍下未付款。"},{"question":"为什么下单佣金比显示的佣金低？","answer":"（1）付款时使用了红包。<br>（2）海外商品或者部分商品扣税了。+<br> （3）商家改佣金了，好省更新不及时。<br>（4）下单价格比好省佣金低。"},{"question":"为什么下单以后看不到订单？","answer":"订单有延迟，请稍作等待。如订单长时间不同步，请联系好省导师。"},{"question":"为什么商品列表页佣金显示和详情页不一致？","answer":"佣金以详情页为准，原因：商家会不定期调整佣金，存在小部分商品佣金更新不及时的情况，不影响结算。"},{"question":"为什么在淘宝订单里会看到有些商品显示已失效？","answer":"客户已经下单了，但后面可能因为某些原因申请了退款，就导致在好省里显示已失效或者是客户代付款的订单超时导致失效。"},{"question":"拼多多订单已确认收货，订单状态为什么还是待结算？","answer":"拼多多订单有审核机制，审核功后，订单才会变为结算状态；确认收货后一般15天内会审核。"},{"question":"拼多多订单已成功退款，订单状态为什么还是待结算？","answer":"平台有审核周期，需要一段时间订单才会变更为已失效。"}],"logo":"http:\/\/qnoss1.lanlanlife.com\/ca6aa54a9fcc6a9972476e5762a342a4_88x88.png"},{"title":"关于提现","content":[{"question":"为什么提现的佣金比上月预估低？","answer":"每月25日提现上月<span+style=\"color:+red;\">结算<\/span>的佣金。"},{"question":"为什么提现的佣金比上月结算低？","answer":"有**退款订单。"},{"question":"为什么提现的佣金比上月结算高？","answer":"账户之前有佣金没有提现。"},{"question":"为什么每天晚上的本月预估变少了？","answer":"晚上同步历史订单，同步到了有人退货。"},{"question":"提现收不到验证码？","answer":"提现时的验证码是好省手机号的验证码，不是支付宝的验证码。"},{"question":"换手机号无法提现？","answer":"联系好省导师微信。"}],"logo":"http:\/\/qnoss1.lanlanlife.com\/05b58029fd78172c782d3125796c9e88_88x88.png"},{"title":"关于云发单","content":[{"question":"提示暂无机器人稍后再试？","answer":"获取的机器人太多，好省没有微信号了，请晚点再获取。"},{"question":"机器人不发单？","answer":"重新获取机器人拉群。"},{"question":"机器人不发单也扣钱？","answer":"重新获取机器人拉群，正常发单以后再暂停就不会扣钱。"},{"question":"加不上机器人？","answer":"微信号是否设置了不允许别人添加。"},{"question":"机器人不进群？","answer":"群人数是否低于40人"}],"logo":"http:\/\/qnoss1.lanlanlife.com\/1152fa51d97130ff555e6164d5aa888d_88x88.png"},{"title":"关于大牌秒杀","content":[{"question":"可以指定快递吗？","answer":"商品由品牌商仓库直发，暂不支持指定快递。"},{"question":"物流超48小时未更新，未收到货？","answer":"若您长时间未收货，物流一直未更新，建议您在订单上申请售后，售后类型选择“仅退款”，退款理由选择“快递\/物流未送达”，备注描述具体情况。提交后，售后客服会在72小时内核实处理回复。"},{"question":"下单后如何修改收货地址？","answer":"下单后，仅当天且会场未结束情况下，可联系在线客服提供商品订单编号及需要修改的信息。仅限下单账号本人联系修改。"},{"question":"下单后如何修改商品信息和规格？","answer":"抱歉亲，无法修改。"},{"question":"订单提交后商品价格变化，可以退差价吗？","answer":"品牌商每次特卖会提供不同的活动力度，商品会有涨价，降价等变化，商品不支持退差价，请考虑清楚后下单，如不需要请及时取消订单。"},{"question":"下单后如何取消订单？","answer":"下单后，仅当天且会场未结束情况下可以在订单右下角申请退款。"},{"question":"购买的商品不想要了怎么办？","answer":"商品发出后不支持取消，如果您不想要商品请您拒收包裹，退回商家。"},{"question":"如何申请自助售后？","answer":"第一步：进入订单详情，点击【确认收货】-点击【申请售后】-选择对应的售后类型-选择退款理由-描述售后原因，上传有效凭证提交申请，等待客服审核。<br>第二步：客服审核之后，进入【售后订单】找到对应退货订单-点击【售后详情】查看退货地址，寄件后在该页面填写正确的退货物流单号，点击提交，等待仓库收货退款。"}],"logo":"http:\/\/qnoss2.lanlanlife.com\/1211acb87a2ee552b475b2a8ba159a5b_88x88.png"},{"title":"其他问题","content":[{"question":"为什么发展的下级成为别人合伙人了？","answer":"1、新人之前扫别人的二维码然后微信登录，被锁粉了。<br>2、新人之前注册过了。<br>3、新人输入了别人的口令。"},{"question":"为什么升级到了团长，下单佣金还是合伙人的？","answer":"团队订单还有一部分。"},{"question":"为什么二维码打不开？","answer":"链接被微信屏蔽，重新分享即可。"},{"question":"宝贝不满意想退款怎么办？","answer":"联系淘宝商家或联系大牌秒杀客服（好省大牌秒杀）。"}],"logo":"http:\/\/qnoss.lanlanlife.com\/3d0a87454fb9d58b5a7b717c2d8865de_88x88.png"}]";
+</script>
+                    <script type="text/javascript" src="//qnst3.lanlanlife.com/release/static/h5/lib/vue-7ebb947e36.2.0.js"></script>
+    <script type="text/javascript" src="//qnst3.lanlanlife.com/release/static/h5/js/utils-91b93052de.js"></script>
+    <script type="text/javascript" src="//qnst3.lanlanlife.com/release/static/h5/lib/vue-7ebb947e36.2.0.js"></script>
+    <script type="text/javascript" src="//qnst3.lanlanlife.com/release/static/h5/lib/vue-resource-d154fbc950.js"></script>
+    <script type="text/javascript" src="//qnst3.lanlanlife.com/release/static/h5/js/sqb/ask-6d76a89f9b.js"></script>
+    </body>
+</html>
