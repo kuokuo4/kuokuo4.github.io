@@ -250,7 +250,7 @@ letter-spacing: 0.1rem;
 }
 .goback{
 left: 2rem;
-top: 2rem;
+top: 1rem;
 z-index: 2;
 position: relative;
 font-size: 4rem;
@@ -258,7 +258,7 @@ font-weight: 100;
 color:gray;
 }
 .gobackfont{
-  font-size: 4rem;
+  font-size: 2.6rem;
   color:gray;
 }
 
