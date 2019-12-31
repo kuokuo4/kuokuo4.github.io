@@ -254,7 +254,7 @@ letter-spacing: 0.1rem;
 z-index: 2;
 /* position: relative;
 font-size: 4rem; */
-font-weight: 100;
+
 /* color:gray; */
 /* vertical-align:top; */
 color:gray;
@@ -267,7 +267,7 @@ font-size:4rem;
 line-height:4rem;
 margin-top:1.6rem;
 margin-left: 2rem;
-font-weight: 130;
+font-weight: 140;
 vertical-align:top;
 
 }
@@ -279,7 +279,7 @@ line-height:2.6rem;
 margin-top:2.5rem;
 margin-left: 0.3rem;
 vertical-align:top;
-
+font-weight: 100;
 }
 
 .navag
