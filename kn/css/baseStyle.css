@@ -257,29 +257,29 @@ font-size: 4rem; */
 font-weight: 100;
 /* color:gray; */
 /* vertical-align:top; */
+color:gray;
+top:50%;
 }
 .gobackicon{
-  color:gray;
   display: inline-block;
   position:relative;
 font-size:4rem;
 line-height:4rem;
-top:50%;
 margin-top:1.6rem;
 margin-left: 2rem;
+font-weight: 130;
 vertical-align:top;
+
 }
 .gobackfont{
-
-  color:gray;
   display: inline-block;
   position:relative;
 font-size:2.6rem;
 line-height:2.6rem;
-top:50%;
-margin-top:2.6rem;
+margin-top:2.5rem;
 margin-left: 0.3rem;
 vertical-align:top;
+
 }
 
 .navag
