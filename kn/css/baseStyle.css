@@ -249,17 +249,37 @@ letter-spacing: 0.1rem;
   vertical-align: middle;
 }
 .goback{
-left: 2rem;
-top: 1rem;
+/* left: 2rem; */
+/* top: 1rem; */
 z-index: 2;
-position: relative;
-font-size: 4rem;
+/* position: relative;
+font-size: 4rem; */
 font-weight: 100;
-color:gray;
+/* color:gray; */
+/* vertical-align:top; */
+}
+.gobackicon{
+  color:gray;
+  display: inline-block;
+  position:relative;
+font-size:4rem;
+line-height:4rem;
+top:50%;
+margin-top:1.6rem;
+margin-left: 2rem;
+vertical-align:top;
 }
 .gobackfont{
-  font-size: 2.6rem;
+
   color:gray;
+  display: inline-block;
+  position:relative;
+font-size:2.6rem;
+line-height:2.6rem;
+top:50%;
+margin-top:2.6rem;
+margin-left: 0.3rem;
+vertical-align:top;
 }
 
 .navag
