@@ -1,40 +1,102 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>常见问题</title>
+        <meta charset="UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="grey" />
+                <script src="h5/lib/zepto.1.1.6.min.js"></script>
+        <script src="h5/lib/zepto.1.1.6.touch.min.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/baseStyle.css">
+    <link rel="stylesheet" type="text/css" href="h5/css/base-d02e577528.css"/>
+   <link rel="stylesheet" type="text/css" href="h5/sqb/ask-5f3211a5f7.css"/>
+            </head>
+    <body style="padding-top:0">
+                <script type="text/javascript">
+        window.mobileUtil = (function(win, doc) {
+        	var UA = navigator.userAgent,
+        		isAndroid = /android|adr/gi.test(UA),
+        		isIOS = /iphone|ipod|ipad/gi.test(UA) && !isAndroid,
+                isBlackBerry = /BlackBerry/i.test(UA),
+                isWindowPhone = /IEMobile/i.test(UA),
+        		isMobile = isAndroid || isIOS || isBlackBerry || isWindowPhone,
+        	    isIphoneX = /iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375);
+        	return {
+        	    isIphoneX: isIphoneX,
+        		isAndroid: isAndroid,
+        		isIOS: isIOS,
+        		isMobile: isMobile,
+        		isWeixin: /MicroMessenger/gi.test(UA),
+        		isQQ: /QQ/gi.test(UA),
+                isApp: /xiaoshijie/gi.test(UA)
+            };
+        })(window, document);
+        !(function (doc, win) {
+            var docEl = doc.documentElement,resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',fsize,
+            fn = function () {
+                var cWidth = !mobileUtil.isMobile ? 750 : docEl.clientWidth;
+                fsize = cWidth/7.5;
+                cWidth && (docEl.style.fontSize = 2 * fsize + 'px');
+            };
+            fn();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, fn, false);
+        })(document, window);
+        </script>
 
-    <!-- <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
-    <title>常见问题</title>
-</head>
-<body>
 
-    <div  style="padding-top: 5rem;">
-        <div>
-          <iframe id="aa" frameborder=0 width=960 height=1200  marginheight=0 marginwidth=0 scrolling=no src=qaindex/index.html></iframe>
+                <div id="app" v-cloak>
+    <div class="item"
+         v-for="(item, index) in ask"
+         :key="'ask-' + index"
+    >
+        <div class="item__left" @click="toggleClose(index)">
+            <img class="item__left__icon" :src="item.logo" alt="" />
+            <h3 class="item__left__h3">{{item.title}}</h3>
+            <img
+                v-if="item.content.length > 2"
+                v-show="item.close"
+                class="item__left__arrow item__left__arrow--open"
+                src="http://qnoss2.lanlanlife.com/8c6cfc22835c493d147b116548242936_12x20.png"
+                alt=""
+            />
+            <img
+                v-if="item.content.length > 2"
+                v-show="!item.close"
+                class="item__left__arrow item__left__arrow--close"
+                src="http://qnoss3.lanlanlife.com/3db991f47fc30fc1164bcd669c3a3cf8_12x20.png"
+                alt=""
+            />
         </div>
-     </div>
-
-    <!-- <iframe id="" name="myframe" src="sjds.html" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe> -->
-    <script>
-        function setIframeHeight(iframe) {
-    if (iframe) {
-    var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-    if (iframeWin.document.body) {
-    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-    }
-    }
-    };
-        window.onload = function(){
-            var ifra = document.getElementById('aa');  //选中iframe   
-            var test = ifra.contentWindow.document.body;
-            //通过contentWindow来查询iframe内部元素
-            test.setAttribute('style', 'max-width: 100% !important');
-            setIframeHeight(document.getElementById('aa'));
-        }
-        
-    </script>
-</body>
+        <ul class="item__right one-pix one-pix--vertical" :class="{'item__right--close': item.close}">
+            <li v-for="(item2, index2) in item.content"
+                class="item__right__item"
+                :class="{'one-pix one-pix--horizontal': index2 > 0}"
+                :key="'question-' + index2"
+                @click="viewAnswer(index, index2)"
+            >{{item2.question}}</li>
+        </ul>
+    </div>
+    <div class="modal" v-show="showAnswer">
+        <div class="modal__mask" @click="closeAnswer" id="mask"></div>
+        <div class="modal__content modal--answer">
+            <h3 class="modal--answer__h3">{{question.question}}</h3>
+            <p class="modal--answer__p" v-html="question.answer"></p>
+            <div class="modal--answer__footer one-pix one-pix--horizontal" @click="closeAnswer">我知道了</div>
+        </div>
+    </div>
+</div>
+<script>
+var ask=
+'[{"title":"热门问题","content":[{"question":"快鸟返利是什么？","answer":"快鸟返利是是一款兼省钱与赚钱为一体的导购APP，在淘宝拼多多京东等平台下单前，打开快鸟APP获得商品优惠券，优惠购买的同时还能拿到返现佣金。推荐APP给好友使用，每一次好友成功购物，你都可以获得奖励分成。"},{"question":"为什么有些商品搜不到优惠券？","answer":"淘宝有几千万的商家，不是每个商家每天都会做活动的，但是只要淘宝商家一有活动，快鸟就立刻会发布最新的隐藏优惠券，你可以免费领取。"},{"question":"快鸟的商品价格这么实惠，是否有售后保障？","answer":"您通过快鸟APP的链接购买的商品均来自各大知名电商平台，你购买的商品均受到《中国消费者保护法》的保护，享有非常完善的售后服务。"}],"logo":"i/hot.png"},{"title":"订单问题","content":[{"question":"订单状态是什么意思？","answer":"订单状态包括： 待付款： 订单已下单， 未付款； 已付款： 订单已付款， 物流中；已完成： 订单已确认收货； 已结算： 订单佣金已结算； 无效： 此订单无效， 佣金不结算。 "},{"question":"买家点击我的推广链接之后，把商品加入购物车之后购买，我有佣金吗？","answer":"买家点击推广链接之后系统会跟踪15天的时间，15天内买家去该店铺购买所有商品都有佣金，不区分买家点击链接之后是加购物车、加收藏夹或者没有做任何操作都不影响。举例：买家1号点击了a店铺的某宝贝的推广链接，10号直接去淘宝搜索进入该店铺购买商品也有佣金。"},{"question":"为什么商品显示的佣金和实际获得的佣金不一致？","answer":"商品佣金根据实际付款金额计算。买家购买商品时，使用（满减，商品优惠，京券，E卡）等优惠，这部分优惠金额及邮费不计算计佣金额，应扣除；商家在设置，调整佣金过程中存在一定的时间而导致实际获得佣金与分享商品佣金不一致，最终以订单实际佣金为准。"},{"question":"为什么下单以后看不到订单？","answer":"订单有延迟，请稍作等待。如订单长时间不同步，请联系快鸟客服。"},{"question":"已成功退款，订单状态为什么还未更新？","answer":"平台有审核周期，需要一段时间订单才会更新状态。"},{"question":"购买后部分退款，还会有返现吗？","answer":"返现是按照商品最终的时间成交金额计算的，如未确认收货发送退款，最终交易状态为成功的，佣金将按照退款后的金额计算。如最终交易状态为关闭，则没有佣金。"}],"logo":"i/payment.png"},{"title":"分享问题","content":[{"question":"如何分享商品赚取佣金？","answer":"打开快鸟APP，找到您想推广的商品，点击分享，分享到微信，QQ等渠道，如有人点击购买，您就可以获得相应的佣金。"},{"question":"怎样分享商品不被朋友屏蔽/拉黑？","answer":"建议把朋友圈进行用户群分组，根据不同属性的组别分享相应商品，每日可更新分享2-6个商品，分享时间间隔5个小时以上，这样朋友既不会感觉刷屏，同时能让朋友定时关注到您的商品。"},{"question":"什么文案能吸引点击？","answer":"推广文案可以结合当下热门新鲜事件、网络用词等，同时也可以用自己平时说话的语气，提高与朋友互动性，这样效果会倍增。"},{"question":"如何提高购买率？","answer":"1）塑造自己的风格店铺，切忌对同一个用户群组什么商品都推广，捉住用户需求。（例如学生群体：刚发完四件套又发大家电，捉不住用户需求，转化自然不好。） 2）朋友圈信息不能全是推广商品，同时需要推送风景、人物照片/热门新鲜事件等信息，让用户知道您是有生活情调的，不只是推广员，建议个人生活分享和商品分享的比例为3:7。 3）提高与用户的互动性，如朋友圈评论、点赞、安慰、问候等，要相信只有和用户建立起信任关系，用户才会依赖于您，订单量自然节节上升。"}],"logo":"i/share.png"},{"title":"等级问题","content":[{"question":"如何才能成为更高级的账户享受高佣？","answer":"普通粉丝邀请3位好友使用快鸟，即可升级为铜牌粉丝；邀请10位好友使用快鸟，可以升级为银牌粉丝；邀请30位好友使用快鸟，可以升级为金牌粉丝；邀请100位好友使用快鸟，经过平台审核后，可以成为联合创始人。"},{"question":"快鸟平台抽成吗？","answer":"不抽成。用户购买商品时产生的佣金将流向3个部分：淘宝联盟等平台服务费（10%）、快鸟优秀用户激励费用（5%）以及用户返现。快鸟平台不参与商品佣金分成，所有的佣金都花在用户身上。"},{"question":"不同等级的账户的区别是什么？","answer":"不同等级的快鸟用户，享受的返利不同，邀请好友使用快鸟时获得的分成奖励也不同，具体可以看快鸟用户等级权益：https://shimo.im/docs/6pdYGWxXvtQTDr3q"},{"question":"如何邀请好友加入快鸟，享受更高的等级权益？","answer":"1）进入快鸟APP「我的」页面，点击好友助力，即可分享小程序给好友，好友点击小程序后成为你的下线，下载快鸟APP即可享受等级权益；2）好友下载快鸟APP后，填写你的邀请码。"}],"logo":"i/rank.png"},{"title":"结算问题","content":[{"question":"返现什么时候结算，什么时候可以提现？","answer":"快鸟每月25号结算上个自然月确认收货的订单，建议在结算后第二天操作提现。举例：8月1号--8月31号确认收货的订单佣金在9月25号进行结算，9月26日提现。"},{"question":"为什么返现佣金没有显示在余额里？","answer":"快鸟每月25号结算上月确认收货的订单，建议您核对时间，本月确认收货的订单下月25号结算。"},{"question":"为什么上个月的预估收入和实际的结算不一样？","answer":"上月预估收入≠结算到账的收入。如果买家申请维权维权成功订单佣金会减去，具体以结算为准。"},{"question":"上个月推广成功很多订单，为什么收入里也没有结算？","answer":"快鸟每个月25号结算的是上个自然月确认收货的定的，如果您上月推广的订单买家本月确认收货，那么下个月才会结算哦，建议核对订单确认收货时间。举例：订单11月20日拍下，12月1日确认收货，那么该笔订单1月20日结算哦。"}],"logo":"i/pay.png"}]';
+</script>
+                    <script type="text/javascript" src="h5/lib/vue-7ebb947e36.2.0.js"></script>
+    <script type="text/javascript" src="h5/js/utils-91b93052de.js"></script>
+    <script type="text/javascript" src="h5/lib/vue-7ebb947e36.2.0.js"></script>
+    <script type="text/javascript" src="h5/lib/vue-resource-d154fbc950.js"></script>
+    <script type="text/javascript" src="h5/sqb/ask-6d76a89f9b.js"></script>
+    </body>
 </html>
