@@ -1,0 +1,12 @@
+{
+  "name": "knpackage",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "scripts": {
+    "surge": "npm run build && keke surge",
+    "surge:prod": "npm run build && keke surge --prod"
+  },
+  "author": "chenwen",
+  "license": "ISC"
+}
