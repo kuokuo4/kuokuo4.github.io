@@ -1,27 +1,13 @@
-/* iphone x / xs / 11 pro*/
-@media only screen and (device-width: 375px) and (device-height: 690px) and (-webkit-device-pixel-ratio: 3) {
-     header{
-         padding-top: 44px;
-     } 
-     footer {
-         padding-bottom:34px; 
-     }
- }
- /* iphone xr / 11 */
- @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
-   
- }
- /* iphone xs max / 11 pro max */
- @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) {
-   
- }
-
 
 body
 {
-  margin: 0;
+  /* margin: 0; */
   background-color: #F2F3F4;
 
+     padding-top: env(safe-area-inset-top); 
+     padding-left: env(safe-area-inset-left);
+     padding-right: env(safe-area-inset-right); 
+     padding-bottom: env(safe-area-inset-bottom); 
 }
 .topban
 {
