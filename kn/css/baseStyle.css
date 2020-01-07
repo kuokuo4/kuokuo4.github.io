@@ -251,14 +251,7 @@ letter-spacing: 0.1rem;
   vertical-align: middle;
 }
 .goback{
-/* left: 2rem; */
-/* top: 1rem; */
 z-index: 2;
-/* position: relative;
-font-size: 4rem; */
-
-/* color:gray; */
-/* vertical-align:top; */
 color:gray;
 top:50%;
 }
