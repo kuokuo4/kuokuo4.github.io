@@ -1,5 +1,6 @@
 body
 {
+  margin: 0;
   background-color: #F2F3F4;
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
@@ -53,7 +54,7 @@ div#maincontent div.horizontal ul {
   list-style-type: none;
   /* margin:0; */
   /* padding: 10px 10% 0 10%; */
-  margin-top: 3%;
+  margin-top: 3;
   margin-bottom: 3%;
 
 }
