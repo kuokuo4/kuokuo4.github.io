@@ -8,5 +8,8 @@
     "surge:prod": "npm run build && keke surge --prod"
   },
   "author": "chenwen",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@ruguoapp/keke-cli": "^0.2.1"
+  }
 }
