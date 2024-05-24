@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F3C61GEJTJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F3C61GEJTJ');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加朋友圈逛逛</title>
+    <style>
+        /* 设置图片容器的样式 */
+        .image-container {
+            width: 100%;
+            text-align: center; /* 居中显示图片 */
+            margin-bottom: 20px; /* 图片之间的间距 */
+        }
+        /* 设置图片的样式 */
+        img {
+            max-width: 300px; /* 最大宽度 */
+            width: 100%; /* 宽度填满容器 */
+            height: auto; /* 高度自动，保持图片比例 */
+        }
+		h2, p {
+            text-align: center;
+        }
+    </style>
+<!--     <script>
+        // 定义图片 URL 数组 man man2 kai kai2 kai3 hu
+        const imageUrls = [
+		 'https://image-qiniu.jellow.site/Fm9EXGWZfimlBrTA3RjRbVmhrAd9.png',
+				 'https://image-qiniu.jellow.site/FutzQkgi6p48E8t90z0tCKFnOUJL.png',
+            'https://image-qiniu.jellow.site/FkaRjhRJ1RCoGPtI15Kg5I1lCaCI.png',
+		            'https://image-qiniu.jellow.site/Fjh2cM38CX5Gqpk4V_5OqHkiiKXO.png'
+		{ url: 'https://image-qiniu.jellow.site/FuPZz4PkcPC14y2J2wvh9Be_ELun.png', weight: 2 }
+
+		 // 'https://image-qiniu.jellow.site/FtQCZlxDmY8GlCErSX2BLpxPs868.jpg'
+        ];
+
+        // 获取随机索引
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+
+        // 设置页面加载完成后执行的函数
+        window.onload = function() {
+            // 获取图片元素
+            const imageElement = document.getElementById('randomImage');
+            // 设置图片的 src 属性为随机选择的 URL
+            imageElement.src = imageUrls[randomIndex];
+        };
+    </script> -->
+<script>
+    // 定义带权重的图片 URL 数组，权重值越大，显示的概率越高
+    const weightedImageUrls = [
+        { url: 'https://image-qiniu.jellow.site/FnqXjHfa_KIod_kiKSJtlltRncUX.png', weight: 8 }, 
+        { url: 'https://image-qiniu.jellow.site/FtQCZlxDmY8GlCErSX2BLpxPs868.jpg', weight: 2 },
+        	{ url: 'https://image-qiniu.jellow.site/Fqy4T_JHveT_6eev75jZCc6e2Z7p.png', weight: 0 }
+        // 可以添加更多带权重的图片URL,weilei huzi qiwei
+    ];
+
+    // 计算所有图片权重的总和
+    const totalWeight = weightedImageUrls.reduce((sum, image) => sum + image.weight, 0);
+
+    // 设置页面加载完成后执行的函数
+    window.onload = function() {
+        // 生成一个0到总权重之间的随机数
+        const randomWeight = Math.random() * totalWeight;
+
+        // 根据权重选择图片
+        let cumulativeWeight = 0;
+        for (const image of weightedImageUrls) {
+            cumulativeWeight += image.weight;
+            if (randomWeight <= cumulativeWeight) {
+                // 获取图片元素
+                const imageElement = document.getElementById('randomImage');
+                // 设置图片的 src 属性为选中的 URL
+                imageElement.src = image.url;
+                break;
+            }
+        }
+    };
+</script>
+</head>
+<body>
+    <h2>加丘比特微信，分配对象❤️</h2>
+	<p>（朋友圈超多帅哥美女，欢迎交友，看上的就加）</p>
+    <div class="image-container">
+        <img id="randomImage" alt="Random Image">
+    </div>
+	<p>扫码加微信👆👆👆</p>
+
+    <!-- 添加两张固定图片 -->
+    <div class="image-container">
+        <img src="https://image-qiniu.jellow.site/FpJquMdqWtfBj5Bs5OITqmGx4nu9.PNG" alt="Fixed Image 1">
+    </div>
+    <div class="image-container">
+        <img src="https://image-qiniu.jellow.site/Fnk5bRCziaV87XsZ8cjTalV0YlR_.jpg" alt="Fixed Image 2">
+    </div>
+</body>
+</html>

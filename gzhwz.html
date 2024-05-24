@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脱单进行中…</title>
+    <script>
+        // 定义要跳转的两个URL
+                const workUrl = 'https://suijikuo.github.io/qbtwx.html'; // 工作日工作时间段跳转宁波https://suijikuo.github.io/qbtwx.html同事https://post.jellow.club/qbtwx
+        const otherUrl = 'https://suijikuo.github.io/img.html';    // 其他时间跳转上海同事https://suijikuo.github.io/img.html
+
+        // 从localStorage获取URL，如果不存在则根据时间决定
+        function getRedirectUrl() {
+            // 检查localStorage中是否有保存的URL
+            const storedUrl = localStorage.getItem('redirectUrl');
+            if (storedUrl) {
+                return storedUrl;
+            }
+
+            // 定义当前时间
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+
+            // 判断是否是工作时间段
+            const isWorkTime = (now.getDay() >= 1 && now.getDay() <= 5) && (hours >= 8 && hours < 21);
+
+            // 根据是否是工作时间段返回对应的URL
+            return isWorkTime ? workUrl : otherUrl;
+        }
+
+        // 将选择的URL保存到localStorage，并重定向到该URL
+        function saveAndRedirect() {
+            const url = getRedirectUrl();
+            localStorage.setItem('redirectUrl', url);
+            window.location.href = url;
+        }
+
+        // 页面加载完成后立即执行保存和重定向
+        document.addEventListener('DOMContentLoaded', saveAndRedirect);
+    </script>
+</head>
+<body>
+    <a>加载成功...</a>
+</body>
+</html>
